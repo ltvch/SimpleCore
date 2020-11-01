@@ -1,0 +1,25 @@
+﻿<div class="modal-dialog">
+    <div class="modal-content">
+        <form method="post" asp-action="SeatPupUp" asp-controller="Home">
+            <div class="modal-header">
+                <h4 class="modal-title">Новая должность</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group form-inline">
+                    <div class="row justify-content-around">
+                        <input type="text" class="form-control col-5" name="Position" />
+                        <label class="control-label col-form-label col-2 offset-1">Должность</label>
+                    </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <div class="form-inline">
+                    <div class="row justify-content-around">
+                        <button type="button" class="btn btn-secondary mr-md-2" data-dismiss="modal" value="Cancel">Закрыть</button>
+                        <button type="Submit" class="btn btn-primary mr-md-2" value="AddSeat">Добавить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

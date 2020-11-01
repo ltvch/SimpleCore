@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Сотрудники";
+}
+
+<div class="container">
+    <div class="row justify-content-between my-sm-2">
+        <button class="btn btn-primary" id='showSeat'>Добавить должность</button>
+        <!--  <div class="col-md-8"></div>-->
+        <button class="btn btn-primary" id='showEmployee'>Добавить сотрудника</button>
+    </div>
+</div>
+
+<!--Два модальных окна-->
+<div id="seatModal" class="modal fade" data-url='@Url.Action("SeatPupUp")'>
+    <div id="seatContainer">
+    </div>
+</div>
+
+<div id="employeeModal" class="modal fade" data-url='@Url.Action("EmployeePupUp")'>
+    <div id="employeeContainer">
+    </div>
+</div>
+
+<!--Табличные данные-->
+<table id="empTable" class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Должность</th>
+            <th>Сотрудник</th>
+            <th>Оклад</th>
+            <th>Дата назначения</th>
+            <th>Дата увольнения</th>
+        </tr>
+    </thead>
+    @foreach (var employee in Model)
+    {
+<tr>
+    <td>@employee.Id</td>
+    <td>@employee.Position</td>
+    <td>@employee.LastName @employee.Name</td>
+    <td>@employee.Salary$</td>
+    <td>@Html.DisplayFor(x => @employee.Hired)</td>
+    <td>@Html.DisplayFor(x => @employee.Fired)</td>
+</tr>
+    }
+</table>
