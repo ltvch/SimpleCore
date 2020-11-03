@@ -29,7 +29,11 @@ namespace SimpleCore.Controllers
 
         public IActionResult Index()
         {
-            return View(db.Employees.ToList()); //передаем список сотрудников в представление Index
+            // return View(db.Employees.ToList()); //передаем список сотрудников в представление Index
+
+            var items = db.Employees.ToList(); // список должностей
+            ViewBag.Items = items;// передаем в представление
+            return View(); //работаем с частичным представлением
         }
 
         #region === Seat Pup Up Modal window ===
@@ -52,19 +56,30 @@ namespace SimpleCore.Controllers
         [HttpGet]
         public ActionResult EmployeePupUp()
         {
-            List<string> items = db.Seats.Select(x => x.Position).ToList();//список должностей
+            var items = db.Seats.ToList(); // список должностей
             ViewBag.Items = items;// передаем в представление
             return PartialView(); //работаем с частичным представлением
         }
-
         [HttpPost]
         public ActionResult EmployeePupUp(Employee employee)
         {
-            db.Employees.Add(employee);// добавляем в бд
-            db.SaveChanges(); //сохраняем в бд все изменения
-            return RedirectToAction("Index");//возвращаемся на основное окно 
+            if (ModelState.IsValid)
+            {
+                db.Employees.Add(employee);// добавляем в бд
+                db.SaveChanges(); //сохраняем в бд все изменения
+                return RedirectToAction("Index");//возвращаемся на основное окно
+            }
+            else return PartialView(employee);//остаемся в том же модальном окне 
         }
         #endregion
+
+        [HttpGet]
+        public ActionResult Employee_()
+        {
+            var items = db.Seats.ToList(); // список должностей
+            ViewBag.Items = items;// передаем в представление
+            return PartialView(); //работаем с частичным представлением
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

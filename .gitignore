@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/SimpleCore/wwwroot/lib/zebra-datapicker/dist

@@ -1,0 +1,47 @@
+﻿@model Employee
+
+<div>
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div class="form-group form-inline">
+        <input type="text" class="form-control col-md-5" required="required" asp-for="LastName" />
+        <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start" asp-for="LastName">Фамилия</label>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group form-inline">
+        <input type="text" class="form-control col-md-5" required="required" asp-for="Name" />
+        <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start">Имя</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group form-inline">
+        <select class="form-control col-md-5" name="Position" asp-items="@(new SelectList(ViewBag.Items,"Id","Position"))">
+            <option selected="selected" disabled="disabled">-Должность-</option>
+        </select>
+        <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start">Должность</label>
+        <span asp-validation-for="Position" class="text-danger"></span>
+    </div>
+    <div class="form-group form-inline">
+        <input type="text" class="form-control col-md-5" required="required" asp-for="Salary" />
+        <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start">Оклад</label>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+    <div class="form-group form-inline">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input col-6" data-target="#datetimepicker1" asp-for="Hired" required="required" />
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+            <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start">Нанят</label>
+        </div>
+        <span asp-validation-for="Hired" class="text-danger"></span>
+    </div>
+    <div class="form-group form-inline">
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input col-6" data-target="#datetimepicker2" name="Fired" />
+            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+            <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start">Уволен</label>
+        </div>
+        <span asp-validation-for="Hired" class="text-danger"></span>
+    </div>
+</div>

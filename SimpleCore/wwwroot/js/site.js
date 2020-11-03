@@ -1,5 +1,18 @@
 ﻿$(document).ready(function () {
 
+    //$('.datepicker').datepicker();
+
+    //$('#dp3').datepicker();
+
+    $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
+
+    $('#datetimepicker2').datetimepicker({
+        format: 'DD/MM/YYYY',
+        autoclose: true
+    });
+
     $('#showSeat').click(function () {
         var url = $('#seatModal').data('url');
 
@@ -13,11 +26,20 @@
     $('#showEmployee').click(function () {
         var url = $('#employeeModal').data('url');
 
+        //$('input.datepicker').Zebra_DatePicker();
+
         $.get(url, function (data) {
             $('#employeeContainer').html(data);
 
             $('#employeeModal').modal('show');
 
+            //$('#datepicker-formats').Zebra_DatePicker({
+            //    format: 'd/m/Y'
+            //});
+
+            //$('#datepicker-formats2').Zebra_DatePicker({
+            //    format: 'd/m/Y'
+            //});
             $('#datetimepicker1').datetimepicker({
                 format: 'DD/MM/YYYY'
             });
@@ -26,7 +48,15 @@
                 format: 'DD/MM/YYYY',
                 autoclose: true,
             });
-        });
-    });
 
+            $('#modal-content').change(
+                function () {
+                    $.validator.unobtrusive.parse("#empPupUp");
+                });
+            if ($('.validation-summary-errors').length) {
+                $('#employeeModal').modal('show');
+            }
+        });
+    }); 
 });
+
