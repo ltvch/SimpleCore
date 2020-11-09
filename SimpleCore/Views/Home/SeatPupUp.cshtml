@@ -1,4 +1,6 @@
-﻿<div class="modal-dialog">
+﻿@model Seat
+
+<div class="modal-dialog">
     <div class="modal-content">
         <form method="post" asp-action="SeatPupUp" asp-controller="Home">
             <div class="modal-header">
@@ -7,11 +9,12 @@
             <div class="modal-body">
                 <div class="form-group form-inline">
                     <div class="row justify-content-around">
-                        <input type="text" class="form-control col-5" name="Position" />
+                        <input type="text" class="form-control col-5" asp-for="Position" />
                         <label class="control-label col-form-label col-2 offset-1">Должность</label>
                     </div>
-                    </div>
+                    <span asp-validation-for="Position" class="text-danger"></span>
                 </div>
+            </div>
             <div class="modal-footer">
                 <div class="form-inline">
                     <div class="row justify-content-around">
