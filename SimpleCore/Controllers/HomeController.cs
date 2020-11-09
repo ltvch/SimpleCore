@@ -33,7 +33,7 @@ namespace SimpleCore.Controllers
 
             var items = db.Employees.ToList(); // список должностей
             ViewBag.Items = items;// передаем в представление
-            return View(); //работаем с частичным представлением
+            return View(); //работаем с представлением
         }
 
         #region === Seat Pup Up Modal window ===
@@ -72,14 +72,6 @@ namespace SimpleCore.Controllers
             else return PartialView(employee);//остаемся в том же модальном окне 
         }
         #endregion
-
-        [HttpGet]
-        public ActionResult Employee_()
-        {
-            var items = db.Seats.ToList(); // список должностей
-            ViewBag.Items = items;// передаем в представление
-            return PartialView(); //работаем с частичным представлением
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

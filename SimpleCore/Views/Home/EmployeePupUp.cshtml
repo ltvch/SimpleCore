@@ -19,9 +19,12 @@
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group form-inline">
-                    <select class="form-control col-md-5" asp-for="Position" asp-items="@(new SelectList(ViewBag.Items,"Id","Position"))">
+                    @*
+                        <select class="form-control col-md-5" asp-for="Position" asp-items="@(new SelectList(ViewBag.Items,"Id","Position"))">
                         <option selected="selected" disabled="disabled">-Должность-</option>
-                    </select>
+                        </select>
+                        *@
+                    @await Component.InvokeAsync("AddSeats")
                     <label class="control-label col-form-label col-2 offset-1 text-left justify-content-start">Должность</label>
                     <span asp-validation-for="Position" class="text-danger"></span>
                 </div>

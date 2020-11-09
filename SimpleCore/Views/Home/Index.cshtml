@@ -29,15 +29,15 @@
     </div>*@
 
 @*<form asp-controller="home" asp-action="EployeePupUp" method="post" class="mt-3">
-    <div class="form-group">
-        <label asp-for="Name">Name of the Poll:</label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label asp-for="Name">Name of the Poll:</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Create</button>
 
-</form>*@
+    </form>*@
 
 @*@section scripts{
 
@@ -57,82 +57,80 @@
 
 
     <!-- Modal Employee-->
-    @*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        @await Html.PartialAsync("_EmployeeP")
-    </div>*@
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            @await Html.PartialAsync("EmployeePupUp")
+    </div>
 
-        <form method="post" asp-action="Employee_" asp-controller="Home" id="pPupUp">
-                <div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Новый сотрудник</h4>
-                                </div>
-                                <div class="modal-body" id="frmEmp">
-                                    @await Html.PartialAsync("Employee_")
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="modal-footer">
-                                        <div class="form-inline">
-                                            <button type="button" class="btn btn-secondary mr-md-2" data-dismiss="modal" value="Cancel">Закрыть</button>
-                                            <button type="submit" class="btn btn-primary mr-md-2" value="Add">Добавить</button>
-                                        </div>
-                                    </div>
-                                </div>
+    @*<form method="post" asp-action="Employee_" asp-controller="Home" id="pPupUp">
+        <div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Новый сотрудник</h4>
+                        </div>
+                        <div class="modal-body" id="frmEmp">                           
+                            @await Html.PartialAsync("Employee_")
+                        </div>
+                        <div class="modal-footer">
+                            <div class="form-inline">
+                                <button type="button" class="btn btn-secondary mr-md-2" data-dismiss="modal" value="Cancel">Закрыть</button>
+                                <button type="submit" class="btn btn-primary mr-md-2" value="Add">Добавить</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
-    </div>
-
-
-
-    <div class="container">
-        <div class="row justify-content-between my-sm-2">
-            <button class="btn btn-primary" id='showSeat'>Добавить должность</button>
-            <!--  <div class="col-md-8"></div>-->
-            <button class="btn btn-primary" id='showEmployee'>Добавить сотрудника</button>
+            </div>
         </div>
+    </form>*@
+</div>
+
+
+
+<div class="container">
+    <div class="row justify-content-between my-sm-2">
+        <button class="btn btn-primary" id='showSeat'>Добавить должность</button>
+        <!--  <div class="col-md-8"></div>-->
+        <button class="btn btn-primary" id='showEmployee'>Добавить сотрудника</button>
     </div>
+</div>
 
-    <!--Два модальных окна-->
-    <div id="seatModal" class="modal fade" data-url='@Url.Action("SeatPupUp")'>
-        <div id="seatContainer">
-        </div>
+<!--Два модальных окна-->
+<div id="seatModal" class="modal fade" data-url='@Url.Action("SeatPupUp")'>
+    <div id="seatContainer">
     </div>
+</div>
 
-    <div id="employeeModal" class="modal fade" data-url='@Url.Action("EmployeePupUp")'>
-        <div id="employeeContainer">
-        </div>
+<div id="employeeModal" class="modal fade" data-url='@Url.Action("EmployeePupUp")'>
+    <div id="employeeContainer">
     </div>
+</div>
 
-    <!--Табличные данные-->
-    <table id="empTable" class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Должность</th>
-                <th>Сотрудник</th>
-                <th>Оклад</th>
-                <th>Дата назначения</th>
-                <th>Дата увольнения</th>
-            </tr>
-        </thead>
-        @foreach (var employee in (IEnumerable<Employee>)ViewBag.Items)
-        {
-            <tr>
-                <td>@employee.Id</td>
-                <td>@employee.Position</td>
-                <td>@employee.LastName @employee.Name</td>
-                <td>@employee.Salary$</td>
-                <td>@Html.DisplayFor(x => @employee.Hired)</td>
-                <td>@Html.DisplayFor(x => @employee.Fired)</td>
-            </tr>
-        }
-    </table>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+<!--Табличные данные-->
+<table id="empTable" class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Должность</th>
+            <th>Сотрудник</th>
+            <th>Оклад</th>
+            <th>Дата назначения</th>
+            <th>Дата увольнения</th>
+        </tr>
+    </thead>
+    @foreach (var employee in (IEnumerable<Employee>)ViewBag.Items)
+    {
+        <tr>
+            <td>@employee.Id</td>
+            <td>@employee.Position</td>
+            <td>@employee.LastName @employee.Name</td>
+            <td>@employee.Salary$</td>
+            <td>@Html.DisplayFor(x => @employee.Hired)</td>
+            <td>@Html.DisplayFor(x => @employee.Fired)</td>
+        </tr>
     }
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

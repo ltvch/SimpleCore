@@ -48,14 +48,6 @@
                 format: 'DD/MM/YYYY',
                 autoclose: true,
             });
-
-            $('#modal-content').change(
-                function () {
-                    $.validator.unobtrusive.parse("#empPupUp");
-                });
-            if ($('.validation-summary-errors').length) {
-                $('#employeeModal').modal('show');
-            }
         });
     }); 
 });
